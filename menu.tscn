@@ -17,20 +17,16 @@ func _input(event):
 
 			get_tree().quit()
 
-func _on_Demo2D_pressed():
-	pass
-	# warning-ignore:return_value_discarded
-#	get_tree().change_scene(\"res://demo/2d/demo_2d.tscn\")
-
-func _on_Demo3D_pressed():
-	
+func _on_Start_pressed():
 	# warning-ignore:return_value_discarded
 	get_tree().change_scene(\"res://scenes/demo.tscn\")
 
+func _on_OtherButton_pressed():
+	pass # Replace with function body.
+
 func _on_Exit_pressed():
 	
-	get_tree().quit()
-"
+	get_tree().quit()"
 
 [node name="Control" type="CenterContainer"]
 anchor_right = 1.0
@@ -74,7 +70,7 @@ text = "Space Trek: The First Frontier
 Demo"
 align = 1
 
-[node name="Demo3D" type="Button" parent="Panel/VBoxContainer"]
+[node name="Begin" type="Button" parent="Panel/VBoxContainer"]
 margin_top = 75.0
 margin_right = 225.0
 margin_bottom = 105.0
@@ -106,6 +102,6 @@ z_index = -3
 [node name="wallhaven-4og7rm" type="Sprite" parent="Node2D"]
 position = Vector2( 877, 539.891 )
 texture = ExtResource( 1 )
-[connection signal="pressed" from="Panel/VBoxContainer/Demo3D" to="." method="_on_Demo3D_pressed"]
-[connection signal="pressed" from="Panel/VBoxContainer/Blank" to="." method="_on_Demo2D_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Begin" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Blank" to="." method="_on_OtherButton_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_Exit_pressed"]
