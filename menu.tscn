@@ -26,7 +26,8 @@ func _on_OtherButton_pressed():
 
 func _on_Exit_pressed():
 	
-	get_tree().quit()"
+	get_tree().quit()
+"
 
 [node name="Control" type="CenterContainer"]
 anchor_right = 1.0

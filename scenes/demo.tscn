@@ -6,10 +6,10 @@
 [ext_resource path="res://scenes/player.tscn" type="PackedScene" id=4]
 
 [sub_resource type="BoxShape" id=1]
-extents = Vector3( 84.4297, 87.5218, 94.2749 )
+extents = Vector3( 84.4297, 59.0758, 94.2749 )
 
 [sub_resource type="BoxShape" id=2]
-extents = Vector3( 93.1064, 87.5436, 98.6254 )
+extents = Vector3( 93.1064, 59.4187, 98.6254 )
 
 [sub_resource type="CylinderShape" id=3]
 radius = 14.4242
@@ -17,12 +17,12 @@ height = 100.0
 
 [sub_resource type="CylinderShape" id=4]
 radius = 68.849
-height = 191.773
+height = 120.548
 
 [sub_resource type="BoxShape" id=5]
-extents = Vector3( 194.998, 87.5436, 105.035 )
+extents = Vector3( 194.998, 59.1516, 105.035 )
 
-[node name="World" type="Spatial"]
+[node name="DemoWorld" type="Spatial"]
 script = ExtResource( 2 )
 player_scene = ExtResource( 4 )
 starting_zone = "Zone01"
@@ -81,7 +81,7 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape" type="CollisionShape" parent="ZoneLoader/Zone03/ZoneTrigger"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 103.504, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 103.504, 4.80269, 0 )
 shape = SubResource( 5 )
 
 [node name="UI" type="Control" parent="."]

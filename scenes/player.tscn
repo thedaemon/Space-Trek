@@ -1,15 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/environment.tres" type="Environment" id=1]
+[ext_resource path="res://resources/arm.escn" type="PackedScene" id=2]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends KinematicBody
 
-const GRAVITY = 55.0
-const MOUSE_SENSITIVITY = 400
-const JUMP_FORCE = 15.0
-const WALK_SPEED = 1200
-const RUN_SPEED = 3000
+# Previously all Constants, change back for speed?
+export var GRAVITY = 55.0
+export var MOUSE_SENSITIVITY = 400
+export var JUMP_FORCE = 15.0
+export var WALK_SPEED = 1200
+export var RUN_SPEED = 3000
 
 var velocity = Vector3()
 
@@ -20,12 +22,11 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func _input(event):
-
+	
 	if event is InputEventMouseMotion:
-
 		var rot_x = -event.relative.y / MOUSE_SENSITIVITY
 		var rot_y = -event.relative.x / MOUSE_SENSITIVITY
-
+		
 		camera.rotate_x(rot_x)
 		rotate_y(rot_y)
 
@@ -34,6 +35,7 @@ func _physics_process(delta):
 	var input_dir = Vector3()
 	var camera_dir = camera.global_transform.basis
 	
+	# Movement
 	if Input.is_action_pressed(\"move_forward\"):
 		input_dir += -camera_dir.z
 	if Input.is_action_pressed(\"move_backward\"):
@@ -62,7 +64,6 @@ func _physics_process(delta):
 			velocity.y -= GRAVITY * delta
 	
 	velocity = move_and_slide(velocity, Vector3.UP)
-
 "
 
 [sub_resource type="CapsuleShape" id=2]
@@ -105,3 +106,6 @@ transform = Transform( 10, 0, 0, 0, -1.62921e-06, 10, 0, -10, -1.62921e-06, 0, 0
 cast_shadow = 0
 mesh = SubResource( 4 )
 material/0 = SubResource( 5 )
+
+[node name="arm" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.233984, 0.00708543, -0.0877565, -0.0277554, -0.230546, -0.0926181, -0.0835527, 0.0964275, -0.21499, 0.465523, 0.40565, -0.435824 )
