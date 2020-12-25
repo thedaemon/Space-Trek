@@ -1,0 +1,111 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://resources/wallhaven-4og7rm.jpg" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends CenterContainer
+
+func _ready():
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+func _input(event):
+	
+	if event is InputEventKey and event.pressed and not event.is_echo():
+		
+		if event.scancode == KEY_ESCAPE:
+
+			get_tree().quit()
+
+func _on_Demo2D_pressed():
+	pass
+	# warning-ignore:return_value_discarded
+#	get_tree().change_scene(\"res://demo/2d/demo_2d.tscn\")
+
+func _on_Demo3D_pressed():
+	
+	# warning-ignore:return_value_discarded
+	get_tree().change_scene(\"res://scenes/demo.tscn\")
+
+func _on_Exit_pressed():
+	
+	get_tree().quit()
+"
+
+[node name="Control" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -0.8909
+margin_bottom = -0.890869
+script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="PanelContainer" parent="."]
+margin_left = 840.0
+margin_top = 444.0
+margin_right = 1079.0
+margin_bottom = 636.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 232.0
+margin_bottom = 185.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+margin_right = 225.0
+margin_bottom = 71.0
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 205.0
+margin_bottom = 51.0
+text = "Space Trek: The First Frontier
+Demo"
+align = 1
+
+[node name="Demo3D" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 75.0
+margin_right = 225.0
+margin_bottom = 105.0
+rect_min_size = Vector2( 80, 30 )
+text = "Begin"
+
+[node name="Blank" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 109.0
+margin_right = 225.0
+margin_bottom = 139.0
+rect_min_size = Vector2( 80, 30 )
+
+[node name="Separator" type="Panel" parent="Panel/VBoxContainer"]
+margin_top = 143.0
+margin_right = 225.0
+margin_bottom = 144.0
+rect_min_size = Vector2( 0, 1 )
+
+[node name="Quit" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 148.0
+margin_right = 225.0
+margin_bottom = 178.0
+rect_min_size = Vector2( 80, 30 )
+text = "Quit"
+
+[node name="Node2D" type="Node2D" parent="."]
+z_index = -3
+
+[node name="wallhaven-4og7rm" type="Sprite" parent="Node2D"]
+position = Vector2( 877, 539.891 )
+texture = ExtResource( 1 )
+[connection signal="pressed" from="Panel/VBoxContainer/Demo3D" to="." method="_on_Demo3D_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Blank" to="." method="_on_Demo2D_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Quit" to="." method="_on_Exit_pressed"]
